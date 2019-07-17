@@ -176,7 +176,7 @@ document.onmousemove = function(){
                             </div>
                             <div class="form-group">
                                 <label for="price">প্রতিটি পন্যের দাম (Price/unit*)</label>
-                                <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
+                                <input type="float" class="form-control" name="price" id="price" placeholder="price" required>
                                 <span class="error"><b>
                                          @if($errors->has('price'))
                                             {{$errors->first('price')}}
