@@ -19,7 +19,9 @@ class CreateProductsTable extends Migration
             $table->foreign('productcategory_id')->references('id')->on('productcategories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('code',100)->unique();
-            $table->integer('quantity');
+            $table->string('shopname');
+            $table->string('unit');
+           
             $table->integer('stock')->nullable();
             $table->double('price');
             $table->boolean('status')->default(1);

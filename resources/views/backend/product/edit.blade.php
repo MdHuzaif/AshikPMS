@@ -61,8 +61,9 @@
                         <div class="x_content">
                             <form action="{{route('product.update',$product->id)}}" method="post">
                                 {{ csrf_field()}}
+
                                 <div class="form-group">
-                                    <label for="productcategory_id">Chose ProductCategory</label>
+                                    <label for="productcategory_id">Chose ProductCategory*</label>
                                     <select class="form-control" id="productcategory_id" name="productcategory_id">
                                         <option value="">--Select Productcategory--</option>
                                         @foreach($productcategory as $d)
@@ -97,14 +98,7 @@
                                             @endif</b>
                                      </span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="quantity">Quantity*</label>
-                                    <input type="number" value="{{$product->quantity}}" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
-                                    <span class="error"><b>
-                                         @if($errors->has('quantity'))
-                                                {{$errors->first('quantity')}}
-                                            @endif</b></span>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="stock">Stock*</label>
                                     <input type="number" value="{{$product->stock}}" class="form-control" id="stock" name="stock" placeholder="Enter Available Stock">
@@ -114,7 +108,7 @@
                                             @endif</b></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="price">Price*</label>
+                                    <label for="price">Price Per Unit*</label>
                                     <input type="number" value="{{$product->price}}" class="form-control" id="price" name="price" placeholder="Enter price pre Item">
                                     <span class="error"><b>
                                          @if($errors->has('price'))

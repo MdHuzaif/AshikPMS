@@ -67,10 +67,10 @@ document.onmousemove = function(){
                     <i class="fa fa-usd"></i>
                     
                     
-                            <p class="text-success"> {{$salesToday}} টাকা</p>
+                            <p class="text-success"> {{$salesToday}} Taka</p>
                       
-                            <p class="text-danger"> আজকের বিক্রয় </p>
-                    {{-- <p class="text-danger">Today's Sale</p> --}}
+                           
+                     <p class="text-danger">Today's Sale</p> 
                     
                     </div>
                 </div><!--/.info-box-->
@@ -89,21 +89,20 @@ document.onmousemove = function(){
                     <div id ="time_2" class="well">
                     <i class="fa fa-line-chart"></i>
                     
-                    <p class="text-success">{{$totalrevenue}} টাকা </p>
-                    <p class="text-danger">সর্বমোট বিক্রয় </p>
-                    {{-- <p class="text-danger">Total Sales Revenue</p> --}}
+                    <p class="text-success">{{$totalrevenue}} Taka</p>
+                    
+                    <p class="text-danger">Total Sales Revenue</p> 
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
-        </div>
-        <div class="row tile_count" style="font-size: large;">
+        
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
                     <div class="well">
                     <i class="fa fa-check"></i>
-                    <p class="text-success">{{$totalcategory}} টি </p>
+                    <p class="text-success">{{$totalcategory}} </p>
                     {{-- <div class="count">{{$totalcategory}}</div> --}}
-                    <p class="text-danger">সর্বমোট প্রোডাক্ট ক্যাটাগরি আছে </p>
+                    <p class="text-danger"> Total Product Catagory  </p>
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
@@ -111,10 +110,10 @@ document.onmousemove = function(){
                 <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
                     <div class="well">
                     <i class="fa fa-table"></i>
-                    <p class="text-primary">{{$totalproduct}} টি </p>
+                    <p class="text-primary">{{$totalproduct}} </p>
                     {{-- <div class="count">{{$totalproduct}}</div> --}}
-                    <p class="text-danger">সর্বমোট প্রোডাক্ট আছে </p>
-                    {{-- <div class="title">Total No. of Product</div> --}}
+                    
+                    <div class="text-danger">Total No. of Product</div>
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
@@ -156,6 +155,7 @@ document.onmousemove = function(){
                     <div class="x_content">
                         <form id="btnSave" action="{{route('sales.store')}}" method="post">
                             {{ csrf_field() }}
+                            
                             <div class="form-group">
                                 <label for="product_id">প্রোডাক্ট বেঁছে নিন (Chose Product) </label>
                                 <select class="form-control js-example-basic-single" id="product_id" name="product_id" data-placeholder="--Search Product--" required>
@@ -199,7 +199,7 @@ document.onmousemove = function(){
                                
 
                             <div class="form-group">
-                                <label>বিক্রির ধরণ  (Sales Status):- &nbsp;</label>
+                                <label> (Sales Status):- &nbsp;</label>
                                <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active"> Cash  </label>
                                 <!--<input type="radio" name="sales_status" id="deactive" value="0"><label for="deactive"> bKash</label>-->
                                 <input type="radio" name="sales_status" id="deactive" value="2"><label for="deactive"> Credit </label>
@@ -219,9 +219,9 @@ document.onmousemove = function(){
                 <div  class="x_panel">
                     <div class="x_title">
                         <h2>
-                             <small> <h3> <p class="text-danger"> স্মার্ট বিক্রয়ের বিল তৈরি করুন </p> </h3> </small>
+                             <small> <h3> <p class="text-danger"> Create Bill </p> </h3> </small>
                              
-                            <small> প্রোডাক্ট এর লিস্ট দেখে নিন</small>
+                            <small> Check Product List </small>
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

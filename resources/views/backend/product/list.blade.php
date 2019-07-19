@@ -61,10 +61,11 @@
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
+                                     <th>Shop-Name</th>
                                     <th>Category Name</th>
                                     <th>Name</th>
                                     <th>Code</th>
-                                    <th>Quantity</th>
+                                    <th>Unit</th>
                                     <th>stock</th>
                                     <th>Price</th>
                                     <th>status</th>
@@ -78,10 +79,29 @@
                                 @foreach($product as $pc)
                                     <tr>
                                         <th> {{$i++}}</th>
+                                         <td>
+                                            @if($pc->shopname == 1)
+                                                <span > Shop-1 </span>
+                                            @elseif($pc->shopname == 2)
+                                                <span>Shop-2</span>
+                                            @else
+                                                <span>Shop-3</span>
+                                            @endif
+                                        </td>
                                         <td>{{$pc->n}} </td>
                                         <td>{{$pc->name}} </td>
                                         <td>{{$pc->code}} </td>
-                                        <td> {{$pc->quantity}}</td>
+                                        
+                                         <td>
+                                            @if($pc->unit == 1)
+                                                <span >Piece </span>
+                                            @elseif($pc->unit == 2)
+                                                <span>Kg</span>
+                                            @else
+                                                <span>Foot</span>
+                                            @endif
+                                        </td>
+                                    
                                         <td> {{$pc->stock}}</td>
                                         <td> {{$pc->price}}</td>
                                         <td>

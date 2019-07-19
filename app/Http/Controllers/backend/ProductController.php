@@ -48,14 +48,15 @@ class ProductController extends Controller
             'productcategory_id' => 'required',
             'name' => 'required',
             'code' => 'required|unique:products',
-            'quantity' => 'required',
+            'stock' => 'required',
             'price' => 'required',
         ]);
         $message = Product::create([
             'productcategory_id' => $request->productcategory_id,
             'name' => $request->name,
             'code' => $request->code,
-            'quantity' => $request->quantity,
+            'shopname' =>$request->shopname,
+            'unit'=>$request->unit, 
             'stock' => $request->quantity,
             'price' => $request->price,
             'status' => $request->status,
@@ -107,7 +108,6 @@ class ProductController extends Controller
             'productcategory_id' => 'required',
             'name' => 'required',
             'code' => 'required',
-            'quantity' => 'required',
             'stock' => 'required',
             'price' => 'required',
         ]);
@@ -115,7 +115,6 @@ class ProductController extends Controller
         $pc->productcategory_id = $request->productcategory_id;
         $pc->name = $request->name;
         $pc->code = $request->code;
-        $pc->quantity = $request->quantity;
         $pc->stock = $request->stock;
         $pc->price = $request->price;
         $pc->status = $request->status;
@@ -164,7 +163,7 @@ class ProductController extends Controller
         ]);
         $pc = Product::find($id);
         $pc->stock = $pc->stock + $request->stock;
-        $pc->quantity = $pc->quantity + $request->stock;
+        //$pc->quantity = $pc->quantity + $request->stock;
         if ($pc->update()) {
             return redirect()->route('product.list')->with('success_message', 'successfully updated Your Stock');
         } else {

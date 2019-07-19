@@ -32,7 +32,7 @@
                 @if($sales)
                     @foreach($sales as $s)
                         @php
-                        $price = $s->price;
+                        $price = $s->price ;
                         $total += $price;
                         @endphp
                     @endforeach

@@ -60,6 +60,21 @@
                         <div class="x_content">
                             <form action="{{route('product.store')}}" method="post">
                                 {{ csrf_field()}}
+
+                            
+                                 <div class="form-group">
+                                    <label for="shopname">Choose Shop-Name</label>
+                                    <select class="form-control" id="shopname" name="shopname">
+                                        <option value="1">Shop-1</option>
+                                        <option value="2">Shop-2</option>
+                                        <option value="3">Shop-3</option>
+                                    </select>
+                                    <span class="error"><b>
+                                       @if($errors->has('productcategory_id'))
+                                                {{$errors->first('productcategory_id')}}
+                                            @endif</b>
+                                    </span>
+                                </div>
                                 <div class="form-group">
                                     <label for="productcategory_id">Chose ProductCategory</label>
                                     <select class="form-control" id="productcategory_id" name="productcategory_id">
@@ -75,7 +90,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Name*</label>
+                                    <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
                                     <span class="error"><b>
                                            @if($errors->has('name'))
@@ -84,7 +99,7 @@
                                      </span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="code">Code*</label>
+                                    <label for="code">Code</label>
                                     <input type="text" class="form-control" id="code" name="code" placeholder="Enter Product code">
                                     <span class="error"><b>
                                            @if($errors->has('code'))
@@ -93,16 +108,29 @@
                                      </span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantity">Quantity*</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
+                                    <label for="quantity">Stock</label>
+                                    <input type="float" class="form-control" id="stock" name="stock" placeholder="Enter quantity">
                                     <span class="error"><b>
                                          @if($errors->has('quantity'))
                                                 {{$errors->first('quantity')}}
                                             @endif</b></span>
                                 </div>
+                                 <div class="form-group">
+                                    <label for="shopname">Choose Unit</label>
+                                    <select class="form-control" id="unit" name="unit">
+                                        <option value="1">Piece</option>
+                                        <option value="2">Kg</option>
+                                        <option value="3">Feet</option>
+                                    </select>
+                                    <span class="error"><b>
+                                       @if($errors->has('productcategory_id'))
+                                                {{$errors->first('productcategory_id')}}
+                                            @endif</b>
+                                    </span>
+                                </div>
                                 <div class="form-group">
-                                    <label for="price">Price*</label>
-                                    <input type="number" class="form-control" id="price" name="price" placeholder="Enter price per Item">
+                                    <label for="price">Price Per Unit</label>
+                                    <input type="float" class="form-control" id="price" name="price" placeholder="Enter price per Unit">
                                     <span class="error"><b>
                                          @if($errors->has('price'))
                                                 {{$errors->first('price')}}
