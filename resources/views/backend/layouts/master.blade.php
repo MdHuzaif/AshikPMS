@@ -72,6 +72,7 @@
                             @foreach($module as $m)
                             <li><a href="{{url($m->module_url)}}"><i class="{{$m->module_icon}}"></i>{{$m->name}}</a></li>
                             @endforeach
+                           
                         </ul>
                     </div>
                 </div>

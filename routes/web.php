@@ -15,6 +15,8 @@ Route::post('/admin-panel', ['as' => 'user.check', 'uses' => 'backend\UserContro
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+
 Route::group(['middleware' => 'Revalidate'],function() {
     Route::group(['middleware' => 'Authenticate'], function () {
 
@@ -119,6 +121,29 @@ Route::group(['middleware' => 'Revalidate'],function() {
         Route::post('/transaction-save', ['as' => 'transaction.store', 'uses' => 'backend\TransactionController@store']);
         Route::get('/transaction-update/{id}', ['as' => 'transaction.update', 'uses' => 'backend\TransactionController@update']);
         Route::get('/transaction-report', ['as' => 'transaction.report', 'uses' => 'backend\TransactionController@export']);
+
+        Route::resource('machine', 'backend\MachineController',['names'=>[
+
+
+
+              'index'=>'backend.machine.index',
+              'edit'=>'backend.machine.edit'
+
+            ]]);
+
+
+
+   
+        
+        
+       
+
+
+
+
+
+
+
 
     });
 });
