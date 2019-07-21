@@ -15,10 +15,12 @@ class CreateSalescartsTable extends Migration
     {
         Schema::create('salescarts', function (Blueprint $table) {
             $table->increments('id');
+    
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('quantity');
             $table->double('price');
+            $table->double('discount');
             $table->string('saller_name');
             $table->boolean('sales_status')->default(1);
             $table->dateTime('sales_date');

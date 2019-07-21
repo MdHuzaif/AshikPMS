@@ -31,6 +31,7 @@ class SalesController extends Controller
             'sales_quantity' => 'required',
         ]);
         if ($request->ajax()) {
+           
             $sales = new Salescart();
             $sales->product_id = $request->product_id;
             $sales->quantity = $request->sales_quantity;
@@ -39,7 +40,8 @@ class SalesController extends Controller
             $sales->saller_name = Auth::user()->name;
             $sales->sales_date = date('Y-m-d');
             if ($sales->save()) {
-                $product = Product::find($request->product_id);
+                $product = Product::find($request->product_id) 
+                          ->where('shopname',$request->shopname);
                 $product->stock = $product->stock - $request->sales_quantity;
                 if ($product->update()) {
                     return response(['success_message' => 'SuccessFully Make sales']);
@@ -172,6 +174,7 @@ class SalesController extends Controller
     {
         for ($i = 0; $i < $request->input('total_product'); $i++) {
             $od = [
+
                 'product_id' => $request['product_id'][$i],
                 'quantity' => $request['quantity'][$i],
                 'price' => $request['price'][$i],

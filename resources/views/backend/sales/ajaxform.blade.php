@@ -11,6 +11,7 @@
             @php($i = 0)
             @foreach($salescart as $sc)
                 <input type="hidden" name="product_id[{{$i}}]" value="{{$sc->product_id}}">
+                <input type="hidden" name="shopname[{{$i}}]" value="{{$sc->shopname}}">
                 <input type="hidden" name="quantity[{{$i}}]" value="{{$sc->quantity}}">
                 <input type="hidden" name="price[{{$i}}]" value="{{$sc->price}}">
                 <input type="hidden" name="sales_status[{{$i}}]" value="{{$sc->sales_status}}">

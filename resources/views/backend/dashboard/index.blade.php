@@ -155,7 +155,7 @@ document.onmousemove = function(){
                     <div class="x_content">
                         <form id="btnSave" action="{{route('sales.store')}}" method="post">
                             {{ csrf_field() }}
-                            
+
                             <div class="form-group">
                                 <label for="product_id">প্রোডাক্ট বেঁছে নিন (Chose Product) </label>
                                 <select class="form-control js-example-basic-single" id="product_id" name="product_id" data-placeholder="--Search Product--" required>
@@ -174,6 +174,7 @@ document.onmousemove = function(){
                                             {{$errors->first('stock')}}
                                          @endif</b></span>
                             </div>
+
                             <div class="form-group">
                                 <label for="price">প্রতিটি পন্যের দাম (Price/unit*)</label>
                                 <input type="float" class="form-control" name="price" id="price" placeholder="price" required>
@@ -184,7 +185,16 @@ document.onmousemove = function(){
                             </div>
                             <div class="form-group">
                                 <label for="sales_quantity">পন্যের পরিমাণ ( Quantity) </label>
-                                <input type="number" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
+                                <input type="float" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
+                                <span class="error"><b>
+                                         @if($errors->has('sales_quantity'))
+                                            {{$errors->first('sales_quantity')}}
+                                         @endif</b></span>
+                            </div>
+
+                              <div class="form-group">
+                                <label for="sales_quantity">Discount </label>
+                                <input type="float" min="0" value="0" class="form-control" id="discount" name="discount" placeholder="Discount" required>
                                 <span class="error"><b>
                                          @if($errors->has('sales_quantity'))
                                             {{$errors->first('sales_quantity')}}

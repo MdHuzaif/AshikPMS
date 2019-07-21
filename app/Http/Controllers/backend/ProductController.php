@@ -55,7 +55,6 @@ class ProductController extends Controller
             'productcategory_id' => $request->productcategory_id,
             'name' => $request->name,
             'code' => $request->code,
-            'shopname' =>$request->shopname,
             'unit'=>$request->unit, 
             'stock' => $request->quantity,
             'price' => $request->price,
