@@ -77,7 +77,7 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <a href=" " class="btn btn-info "><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a href=" {{route('backend.machine.edit',$m->id)}}" class="btn btn-info "><i class="fa fa-pencil"></i> Edit</a>
                                                 </div>
                                                
                                             </div>

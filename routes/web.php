@@ -134,16 +134,9 @@ Route::group(['middleware' => 'Revalidate'],function() {
 
 
    
+      Route::post('/update-machine/{id}','backend\MachineController@update');  
         
-        
-       
-
-
-
-
-
-
-
+    
 
     });
 });

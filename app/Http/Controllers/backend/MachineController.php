@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Machine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//use App\Http\Requests;
 
 
 class MachineController extends Controller
@@ -63,7 +64,9 @@ class MachineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $machine = Machine::find($id);
+    
+        return view('backend.machine.edit', compact('machine'));
     }
 
     /**
@@ -75,7 +78,25 @@ class MachineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'shopname' => 'required',
+            'total' => 'required',
+            'run' => 'required',
+            'damage' => 'required',
+    
+        ]);
+        $m = Machine::find($id);
+        $m->shopname = $request->shopname;
+        $m->total= $request->total;
+        $m->run = $request->run;
+        $m->damage = $request->damage;
+        $m->updated_at = date('Y-m-d H:i:s');
+        $message = $m->update();
+        if ($message) {
+            return redirect()->route('backend.machine.index')->with('success_message', 'successfully updated');
+        } else {
+            return redirect()->route('backend.machine.edit')->with('error_message', 'failed to  update');
+        }
     }
 
     /**
