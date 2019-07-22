@@ -81,14 +81,14 @@ class MachineController extends Controller
         $this->validate($request, [
             'shopname' => 'required',
             'total' => 'required',
-            'run' => 'required',
             'damage' => 'required',
     
         ]);
+        
         $m = Machine::find($id);
         $m->shopname = $request->shopname;
         $m->total= $request->total;
-        $m->run = $request->run;
+        $m->run =$request->total - $request->damage;
         $m->damage = $request->damage;
         $m->updated_at = date('Y-m-d H:i:s');
         $message = $m->update();

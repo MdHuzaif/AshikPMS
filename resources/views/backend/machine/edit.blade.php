@@ -83,16 +83,7 @@
                                             @endif</b>
                         </span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="name">Running*</label>
-                                    <input type="number" class="form-control" id="shopname" value="{{$machine->run}}" name="run"
-                                           placeholder="Enter Running Machine">
-                                    <span class="error"><b>
-                            @if($errors->has('name'))
-                                                {{$errors->first('name')}}
-                                            @endif</b>
-                        </span>
-                                </div>
+                                
 
                                 <div class="form-group">
                                     <label for="name">Damaged*</label>
