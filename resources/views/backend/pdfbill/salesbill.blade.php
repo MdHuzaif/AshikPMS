@@ -6,12 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Johuri Bosraloy - Print Invoice</title>
+    <title>Ashik Engineering- Print Invoice</title>
 </head>
 <body>
-<p align="center"><strong> Bosro Johuri - Invoice</strong></p>
-<p align="center">136, Kazi Nazrul Islam Road, Bagerhat Sadar, Bagerhat</p>
-<p align="center">Phone: 01711449943</p>
+<p align="center"><strong> Ashik Engineering - Invoice</strong></p>
+<p align="center">Khan Jahan Ali Road,Beside Alia Madrasa,Khulna</p>
+<p align="center">Phone: 01711987569</p>
 <hr>
 <p >Date: {{Carbon\Carbon::now()->format('d-m-Y')}}</p>
 <p>RefNo: {{ str_random(12) }}</p>
@@ -20,18 +20,30 @@
     <thead>
     <tr>
         <th>S.N.</th>
-        <th>Product Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
+        <th colspan="2">Product Name</th>
+        <th colspan="2">Quantity</th>
+        <th colspan="2">Unit</th>
+        <th colspan="2">Price</th>
     </tr>
     </thead>
     <tbody>
     <?php $i=1 ?>
     @foreach($report as $all)
     <tr>
-        <td>{{$i++}}</td>
-        <td>{{$all->name}}</td>
-        <td>{{$all->quantity}}</td>
+        <td >{{$i++}}</td>
+        <td colspan="2">{{$all->name}}</td>
+        <td colspan="2">{{$all->quantity}}</td>
+
+       <td colspan="2">
+         @if($all->unit == 1)
+             <span >Piece </span>
+         @elseif($all->unit == 2)
+            <span>Kg</span>
+         @else
+            <span>Foot</span>
+        @endif
+     </td>
+     
         <td>{{$all->price}}</td>
     </tr>
     @endforeach
