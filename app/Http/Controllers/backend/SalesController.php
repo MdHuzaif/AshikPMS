@@ -31,17 +31,18 @@ class SalesController extends Controller
             'sales_quantity' => 'required',
         ]);
         if ($request->ajax()) {
-           
+             $d =$request->discount;
             $sales = new Salescart();
             $sales->product_id = $request->product_id;
             $sales->quantity = $request->sales_quantity;
-            $sales->price = $request->price * $request->sales_quantity;
+            $p = $request->price * $request->sales_quantity;
+            $w =($p *$d)/100 ; 
+            $sales->price =$p - $w;
             $sales->sales_status = $request->sales_status;
             $sales->saller_name = Auth::user()->name;
             $sales->sales_date = date('Y-m-d');
             if ($sales->save()) {
-                $product = Product::find($request->product_id) 
-                          ->where('shopname',$request->shopname);
+                $product = Product::find($request->product_id) ;
                 $product->stock = $product->stock - $request->sales_quantity;
                 if ($product->update()) {
                     return response(['success_message' => 'SuccessFully Make sales']);

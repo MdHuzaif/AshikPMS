@@ -67,42 +67,36 @@ document.onmousemove = function(){
                     <i class="fa fa-usd"></i>
                     
                     
-                            <p class="text-success"> {{$salesToday}} Taka</p>
+                            <p class="text-success"> {{$salesToday}} টাকা</p>
                       
-                           
-                     <p class="text-danger">Today's Sale</p> 
+                            <p class="text-danger"> আজকের বিক্রয় </p>
+                    {{-- <p class="text-danger">Today's Sale</p> --}}
                     
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                {{-- Page load 
-<script type="text/javascript">
-    setInterval("my_function();",500); 
-    function my_function(){
-      $('#refresh_2').load(location.href + ' #time_2');
-    }
-    </script>
-    --}}
+               
                 <div id = "refresh_2"class=".bg-olive" style="text-align: center;border-radius: 5px;">
                     <div id ="time_2" class="well">
                     <i class="fa fa-line-chart"></i>
                     
-                    <p class="text-success">{{$totalrevenue}} Taka</p>
-                    
-                    <p class="text-danger">Total Sales Revenue</p> 
+                    <p class="text-success">{{$totalrevenue}} টাকা </p>
+                    <p class="text-danger">সর্বমোট বিক্রয় </p>
+                    {{-- <p class="text-danger">Total Sales Revenue</p> --}}
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
-        
+        </div>
+        <div class="row tile_count" style="font-size: large;">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
                     <div class="well">
                     <i class="fa fa-check"></i>
-                    <p class="text-success">{{$totalcategory}} </p>
+                    <p class="text-success">{{$totalcategory}} টি </p>
                     {{-- <div class="count">{{$totalcategory}}</div> --}}
-                    <p class="text-danger"> Total Product Catagory  </p>
+                    <p class="text-danger">সর্বমোট প্রোডাক্ট ক্যাটাগরি আছে </p>
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
@@ -110,10 +104,10 @@ document.onmousemove = function(){
                 <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
                     <div class="well">
                     <i class="fa fa-table"></i>
-                    <p class="text-primary">{{$totalproduct}} </p>
+                    <p class="text-primary">{{$totalproduct}} টি </p>
                     {{-- <div class="count">{{$totalproduct}}</div> --}}
-                    
-                    <div class="text-danger">Total No. of Product</div>
+                    <p class="text-danger">সর্বমোট প্রোডাক্ট আছে </p>
+                    {{-- <div class="title">Total No. of Product</div> --}}
                     </div>
                 </div><!--/.info-box-->
             </div><!--/.col-->
@@ -155,7 +149,6 @@ document.onmousemove = function(){
                     <div class="x_content">
                         <form id="btnSave" action="{{route('sales.store')}}" method="post">
                             {{ csrf_field() }}
-
                             <div class="form-group">
                                 <label for="product_id">প্রোডাক্ট বেঁছে নিন (Chose Product) </label>
                                 <select class="form-control js-example-basic-single" id="product_id" name="product_id" data-placeholder="--Search Product--" required>
@@ -174,10 +167,9 @@ document.onmousemove = function(){
                                             {{$errors->first('stock')}}
                                          @endif</b></span>
                             </div>
-
                             <div class="form-group">
                                 <label for="price">প্রতিটি পন্যের দাম (Price/unit*)</label>
-                                <input type="float" class="form-control" name="price" id="price" placeholder="price" required>
+                                <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
                                 <span class="error"><b>
                                          @if($errors->has('price'))
                                             {{$errors->first('price')}}
@@ -185,41 +177,33 @@ document.onmousemove = function(){
                             </div>
                             <div class="form-group">
                                 <label for="sales_quantity">পন্যের পরিমাণ ( Quantity) </label>
-                                <input type="float" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
-                                <span class="error"><b>
-                                         @if($errors->has('sales_quantity'))
-                                            {{$errors->first('sales_quantity')}}
-                                         @endif</b></span>
-                            </div>
-
-                              <div class="form-group">
-                                <label for="sales_quantity">Discount </label>
-                                <input type="float" min="0" value="0" class="form-control" id="discount" name="discount" placeholder="Discount" required>
+                                <input type="number" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
                                 <span class="error"><b>
                                          @if($errors->has('sales_quantity'))
                                             {{$errors->first('sales_quantity')}}
                                          @endif</b></span>
                             </div>
                             <div class="form-group">
-                                    <label for="customer_name">Customer Name and Contact No. </label>
-                                    <input type="text"  class="form-control" id="customer_name" name="customer_name" placeholder="Customer Name and Contact No." >
-                                   
-                                </div>
-                                
-                               
+                                <label for="Discount">Discount </label>
+                                <input type="float" min="0" value="0" class="form-control" id="discount" name="discount" placeholder="discount" required>
+                                <span class="error"><b>
+                                         @if($errors->has('sales_quantity'))
+                                            {{$errors->first('sales_quantity')}}
+                                         @endif</b></span>
+                            </div>
+
 
                             <div class="form-group">
-                                <label> (Sales Status):- &nbsp;</label>
-                               <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active"> Cash  </label>
-                                <!--<input type="radio" name="sales_status" id="deactive" value="0"><label for="deactive"> bKash</label>-->
-                                <input type="radio" name="sales_status" id="deactive" value="2"><label for="deactive"> Credit </label>
+                                <label>বিক্রির ধরণ  (Sales Status):- &nbsp;</label>
+                                <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active"> নগদ (Cash Sales) </label>
+                                <input type="radio" name="sales_status" id="deactive" value="0"><label for="deactive"> (বাকি) Credit Sales </label>
                             </div>
                             <input type="hidden" name="birthday_status" value="0">
                             <input type="hidden" name="dob" value="2017-">
                             <input type="hidden" name="phone" value="977-">
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" name="btnSave" class="btn btn-primary mb1 bg-red"> বিক্রির জন্য জমা করুন  Add to SmartSales </button>
+                                <button type="submit" name="btnSave" class="btn btn-primary mb1 bg-red"> (বিক্রি কনফার্ম করুন) Confirm SmartSales </button>
                             </div>
                         </form>
                     </div>
@@ -229,9 +213,9 @@ document.onmousemove = function(){
                 <div  class="x_panel">
                     <div class="x_title">
                         <h2>
-                             <small> <h3> <p class="text-danger"> Create Bill </p> </h3> </small>
+                             <small> <h3> <p class="text-danger"> স্মার্ট বিক্রয়ের বিল তৈরি করুন </p> </h3> </small>
                              
-                            <small> Check Product List </small>
+                            <small> প্রোডাক্ট এর লিস্ট দেখে নিন</small>
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
