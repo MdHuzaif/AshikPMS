@@ -17,7 +17,7 @@ class RoleController extends Controller
     public function index()
     {
         //$this->checkpermission('role-list');
-         $role = DB::select('select * from roles where id <>1 and id <>3', [1]);
+         $role = DB::select('select * from roles where id <>1', [1]);
         
         return view('backend.role.list', compact('role'));
     }

@@ -22,96 +22,12 @@
 <!-- page content -->
 @section('content')
     <div class="right_col" role="main">
+
         <!-- top tiles -->
-        <div class="row tile_count" style="font-size: large;">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
-{{-- Page load --}}
+        
+       
+        <!--  bottom 2 -->
 
-<script type="text/javascript">
-var timeout;
-document.onmousemove = function(){
-  clearTimeout(timeout);
-  timeout = setTimeout(function(){$('#refresh_1').load(location.href + ' #time_1');
-  $('#refresh_2').load(location.href + ' #time_2');
-  }, 5000);
-}
-</script>
-
-{{-- <script type="text/javascript">
-
-var timeout;
-document.onmousemove = function(){
-  clearTimeout(timeout);
-//   timeout = setTimeout(function();
-// }
-    
-    if (setTimeout(function()) > 100){
-        setInterval("my_function1();",1)
-        function my_function1(){
-       $('#refresh_1').load(location.href + ' #time_1');
-    }
-    setInterval("my_function2();",1)
-    function my_function2(){
-      $('#refresh_2').load(location.href + ' #time_2');
-    }
-    
-    }
-}
-    // setInterval("my_function();",500); 
-    // function my_function(){
-    //   $('#refresh_1').load(location.href + ' #time_1');
-    // }
-  </script> --}}
-                <div id = "refresh_1"class=".bg-olive" style="text-align: center;border-radius: 5px;">
-                    <div id ="time_1" class="well">
-                    <i class="fa fa-usd"></i>
-                    
-                    
-                            <p class="text-success"> {{$salesToday}} টাকা</p>
-                      
-                            <p class="text-danger"> আজকের বিক্রয় </p>
-                    {{-- <p class="text-danger">Today's Sale</p> --}}
-                    
-                    </div>
-                </div><!--/.info-box-->
-            </div><!--/.col-->
-
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-               
-                <div id = "refresh_2"class=".bg-olive" style="text-align: center;border-radius: 5px;">
-                    <div id ="time_2" class="well">
-                    <i class="fa fa-line-chart"></i>
-                    
-                    <p class="text-success">{{$totalrevenue}} টাকা </p>
-                    <p class="text-danger">সর্বমোট বিক্রয় </p>
-                    {{-- <p class="text-danger">Total Sales Revenue</p> --}}
-                    </div>
-                </div><!--/.info-box-->
-            </div><!--/.col-->
-        </div>
-        <div class="row tile_count" style="font-size: large;">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
-                    <div class="well">
-                    <i class="fa fa-check"></i>
-                    <p class="text-success">{{$totalcategory}} টি </p>
-                    {{-- <div class="count">{{$totalcategory}}</div> --}}
-                    <p class="text-danger">সর্বমোট প্রোডাক্ট ক্যাটাগরি আছে </p>
-                    </div>
-                </div><!--/.info-box-->
-            </div><!--/.col-->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
-                    <div class="well">
-                    <i class="fa fa-table"></i>
-                    <p class="text-primary">{{$totalproduct}} টি </p>
-                    {{-- <div class="count">{{$totalproduct}}</div> --}}
-                    <p class="text-danger">সর্বমোট প্রোডাক্ট আছে </p>
-                    {{-- <div class="title">Total No. of Product</div> --}}
-                    </div>
-                </div><!--/.info-box-->
-            </div><!--/.col-->
-        </div>
         <!-- /top tiles -->
         @if(Session::has('success_message'))
             <div class="alert alert-success">
@@ -194,16 +110,16 @@ document.onmousemove = function(){
 
 
                             <div class="form-group">
-                                <label>বিক্রির ধরণ  (Sales Status):- &nbsp;</label>
-                                <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active"> নগদ (Cash Sales) </label>
-                                <input type="radio" name="sales_status" id="deactive" value="0"><label for="deactive"> (বাকি) Credit Sales </label>
+                                <label>Sales Status:- &nbsp;</label>
+                                <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active">Cash Sales</label>
+                                
                             </div>
                             <input type="hidden" name="birthday_status" value="0">
                             <input type="hidden" name="dob" value="2017-">
                             <input type="hidden" name="phone" value="977-">
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" name="btnSave" class="btn btn-primary mb1 bg-red"> (বিক্রি কনফার্ম করুন) Confirm SmartSales </button>
+                                <button type="submit" name="btnSave" class="btn btn-primary mb1 bg-red"> Confirm Sale </button>
                             </div>
                         </form>
                     </div>
@@ -244,9 +160,118 @@ document.onmousemove = function(){
         </div>
         
         <br/>
+
+
+        <!-- top 2 start --->
+
+
+        <div class="row tile_count" style="font-size: large;">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+{{-- Page load --}}
+
+<script type="text/javascript">
+var timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){$('#refresh_1').load(location.href + ' #time_1');
+  $('#refresh_2').load(location.href + ' #time_2');
+  }, 5000);
+}
+</script>
+
+{{-- <script type="text/javascript">
+
+var timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+//   timeout = setTimeout(function();
+// }
+    
+    if (setTimeout(function()) > 100){
+        setInterval("my_function1();",1)
+        function my_function1(){
+       $('#refresh_1').load(location.href + ' #time_1');
+    }
+    setInterval("my_function2();",1)
+    function my_function2(){
+      $('#refresh_2').load(location.href + ' #time_2');
+    }
+    
+    }
+}
+    // setInterval("my_function();",500); 
+    // function my_function(){
+    //   $('#refresh_1').load(location.href + ' #time_1');
+    // }
+  </script> --}}
+                <div id = "refresh_1"class=".bg-olive" style="text-align: center;border-radius: 5px;">
+                    <div id ="time_1" class="well">
+                    <i class="fa fa-usd"></i>
+                    
+                    
+                            <p class="text-success"> {{$salesToday}} টাকা</p>
+                      
+                            <p class="text-danger"> আজকের বিক্রয় </p>
+                    {{-- <p class="text-danger">Today's Sale</p> --}}
+                    
+                    </div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+               
+                <div id = "refresh_2"class=".bg-olive" style="text-align: center;border-radius: 5px;">
+                    <div id ="time_2" class="well">
+                    <i class="fa fa-line-chart"></i>
+                    
+                    <p class="text-success">{{$totalrevenue}} টাকা </p>
+                    <p class="text-danger">সর্বমোট বিক্রয় </p>
+                    {{-- <p class="text-danger">Total Sales Revenue</p> --}}
+                    </div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+        </div>
+
+        <!---top 2 end---->
+
+
+        <!-- bottom 2 Start --->
+             <div class="row tile_count" style="font-size: large;">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
+                    <div class="well">
+                    <i class="fa fa-check"></i>
+                    <p class="text-success">{{$totalcategory}} টি </p>
+                    {{-- <div class="count">{{$totalcategory}}</div> --}}
+                    <p class="text-danger">সর্বমোট প্রোডাক্ট ক্যাটাগরি আছে </p>
+                    </div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class=".bg-olive" style="text-align: center;border-radius: 5px;">
+                    <div class="well">
+                    <i class="fa fa-table"></i>
+                    <p class="text-primary">{{$totalproduct}} টি </p>
+                    {{-- <div class="count">{{$totalproduct}}</div> --}}
+                    <p class="text-danger">সর্বমোট প্রোডাক্ট আছে </p>
+                    {{-- <div class="title">Total No. of Product</div> --}}
+                    </div>
+                </div><!--/.info-box-->
+            </div><!--/.col-->
+        </div>
+
+        <!--  bottom 2 end---->
+
+
     </div>
     <!-- /page content -->
+
+
+
+
 @endsection
+
+
 
 @section('script')
     <script src="{{asset('backend/plugins/select2.min.js')}}"></script>
