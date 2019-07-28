@@ -23,10 +23,14 @@
 @section('content')
     <div class="right_col" role="main">
 
+
         <!-- top tiles -->
         
        
         <!--  bottom 2 -->
+
+
+      
 
         <!-- /top tiles -->
         @if(Session::has('success_message'))
@@ -110,16 +114,20 @@
 
 
                             <div class="form-group">
+
                                 <label>Sales Status:- &nbsp;</label>
                                 <input type="radio" name="sales_status" value="1" id="Active" checked=""><label for="Active">Cash Sales</label>
                                 
+
                             </div>
                             <input type="hidden" name="birthday_status" value="0">
                             <input type="hidden" name="dob" value="2017-">
                             <input type="hidden" name="phone" value="977-">
                             <!-- /.box-body -->
                             <div class="box-footer">
+
                                 <button type="submit" name="btnSave" class="btn btn-primary mb1 bg-red"> Confirm Sale </button>
+
                             </div>
                         </form>
                     </div>
