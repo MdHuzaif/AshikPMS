@@ -1,0 +1,7 @@
+version 1
+
+index.php
+.env
+.htacess /home/imsprobd/public_html/ashikengineering.com/.htaccess
+/home/imsprobd/public_html/ashikengineering.com/resources/views/backend/user/login.blade.php
+/home/imsprobd/public_html/ashikengineering.com/resources/views/backend/layouts/app.blade.php
