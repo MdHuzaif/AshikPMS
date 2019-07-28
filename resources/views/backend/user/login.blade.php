@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     
-    <title>Login to Demo of IMSPROBD </title>
+    <title>Ashik Engineering </title>
   
     
     
@@ -168,15 +168,16 @@ span.psw {
     
 </head>
 <body>
+
+  <h2>Ashik Engineering </h2>
  <nav class="navbar navbar-inverse">
-  <a href="https://www.imsprobd.com"><h4>IMSPROBD</h4></a>
-  <a href="">{{ "   "  }}</a>
-  <a href="#Features"> <strong> <font color="yellow" ><h4>হিসাবের গড়মিল আর না!!      নিরাপদ বেঁচাকেনা করুন আমাদের inventory management software এর মাধ্যমে, ঘরে বসেই বেঁচাকেনার সব হিসেব দেখুন </h4>   </font></strong> </a>
-  <a href="#contact">Contact: 01644529316</a>
+  
+  <a href=""> </a>
+ 
+
 </nav>
 
-<h2> Welcome to secured IMSPROBD DEMO Login </h2>
-<p>A secure and fast business management software for your business</p>
+
 
    
      <div class="container">
