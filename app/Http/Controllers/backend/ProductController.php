@@ -56,7 +56,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'code' => $request->code,
             'unit'=>$request->unit, 
-            'stock' => $request->quantity,
+            'stock' => $request->stock,
             'price' => $request->price,
             'status' => $request->status,
             'created_by' => Auth::user()->username,

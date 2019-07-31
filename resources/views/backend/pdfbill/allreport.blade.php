@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,7 @@
                 @foreach($report as $s)
                     @php
                         $price = $s->price;
-                        $total += $price;
+                        $total += $price ;
                     @endphp
                 @endforeach
                BDT. {{$total}}

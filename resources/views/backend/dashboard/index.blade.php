@@ -70,7 +70,7 @@
                         <form id="btnSave" action="{{route('sales.store')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="product_id">প্রোডাক্ট বেঁছে নিন (Chose Product) </label>
+                                <label for="product_id">Chose Product) </label>
                                 <select class="form-control js-example-basic-single" id="product_id" name="product_id" data-placeholder="--Search Product--" required>
                                 </select>
                                 <span class="error"><b>
@@ -80,7 +80,7 @@
                                     </span>
                             </div>
                             <div class="form-group">
-                                <label for="quantity">স্টকে আছে  (Stock Available )</label>
+                                <label for="quantity">(Stock Available )</label>
                                 <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock Available" disabled>
                                 <span class="error"><b>
                                          @if($errors->has('stock'))
@@ -88,7 +88,7 @@
                                          @endif</b></span>
                             </div>
                             <div class="form-group">
-                                <label for="price">প্রতিটি পন্যের দাম (Price/unit*)</label>
+                                <label for="price"> (Price/unit*)</label>
                                 <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
                                 <span class="error"><b>
                                          @if($errors->has('price'))
@@ -96,7 +96,7 @@
                                          @endif</b></span>
                             </div>
                             <div class="form-group">
-                                <label for="sales_quantity">পন্যের পরিমাণ ( Quantity) </label>
+                                <label for="sales_quantity"> ( Quantity) </label>
                                 <input type="number" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
                                 <span class="error"><b>
                                          @if($errors->has('sales_quantity'))

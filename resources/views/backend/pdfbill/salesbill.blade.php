@@ -21,8 +21,9 @@
     <tr>
         <th>S.N.</th>
         <th colspan="2">Product Name</th>
-        <th colspan="2">Quantity</th>
-        <th colspan="2">Unit</th>
+        <th colspan="3">Quantity</th>
+        <th colspan="3">Unit</th>
+        <th colspan="3">Discount</th>
         <th colspan="2">Price</th>
     </tr>
     </thead>
@@ -32,9 +33,9 @@
     <tr>
         <td >{{$i++}}</td>
         <td colspan="2">{{$all->name}}</td>
-        <td colspan="2">{{$all->quantity}}</td>
+        <td colspan="3"  align="center">{{$all->quantity}}</td>
 
-       <td colspan="2">
+       <td colspan="3"  align="center">
          @if($all->unit == 1)
              <span >Piece </span>
          @elseif($all->unit == 2)
@@ -43,24 +44,29 @@
             <span>Foot</span>
         @endif
      </td>
-     
-        <td>{{$all->price}}</td>
+    
+     <td colspan="3"  align="center">{{$all->discount}}</td>
+        <td colspan="2">{{$all->price * $all->quantity }}</td>
     </tr>
     @endforeach
     <tr>
-        <td colspan="3"> Grand Total </td>
-        <td>
+        <td colspan="6"> Grand Total </td>
+                
+        <td colspan="4" align="center">
             <?php $total=0 ?>
             @if($report)
                 @foreach($report as $s)
                     @php
                         $price = $s->price;
+                        $quantity = $s->quantity;
+                        $price= ($price * $quantity)- ($price * $quantity)*($s->discount/100);
                         $total += $price;
                     @endphp
                 @endforeach
                BDT. {{$total}}
             @endif
         </td>
+
     </tr>
     </tbody>
 </table>

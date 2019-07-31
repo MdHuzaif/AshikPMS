@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('quantity');
             $table->double('price');
+            $table->double('discount');
             $table->string('saller_name');
             $table->boolean('sales_status')->default(1);
             $table->date('sales_date');

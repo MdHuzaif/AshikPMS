@@ -31,11 +31,12 @@ class SalesController extends Controller
             'sales_quantity' => 'required',
         ]);
         if ($request->ajax()) {
-             $d =$request->discount;
+            $d=$request->discount;
             $sales = new Salescart();
             $sales->product_id = $request->product_id;
             $sales->quantity = $request->sales_quantity;
             $p = $request->price * $request->sales_quantity;
+            $sales->discount=$request->discount;
             $w =($p *$d)/100 ; 
             $sales->price =$p - $w;
             $sales->sales_status = $request->sales_status;
