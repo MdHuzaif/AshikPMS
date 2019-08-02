@@ -122,22 +122,18 @@ Route::group(['middleware' => 'Revalidate'],function() {
         Route::get('/transaction-update/{id}', ['as' => 'transaction.update', 'uses' => 'backend\TransactionController@update']);
         Route::get('/transaction-report', ['as' => 'transaction.report', 'uses' => 'backend\TransactionController@export']);
 
-        Route::resource('machine', 'backend\MachineController',['names'=>[
-
-
-
-              'index'=>'backend.machine.index',
-              'edit'=>'backend.machine.edit'
-
-            ]]);
-
-
-
-   
-      Route::post('/update-machine/{id}','backend\MachineController@update');  
+        
       
-      
-    
+            
+
+           
+        Route::get('/machine-create', ['as' => 'machine.create', 'uses' => 'backend\machineController@create']);
+        Route::get('/machine-list', ['as' => 'machine.list', 'uses' => 'backend\machineController@index']);
+        Route::post('/machine-save', ['as' => 'machine.store', 'uses' => 'backend\machineController@store']);
+        Route::delete('/machine-delete/{id}', ['as' => 'machine.delete', 'uses' => 'backend\machineController@destroy']);
+        Route::get('/machine-edit/{id}/edit', ['as' => 'machine.edit', 'uses' => 'backend\machineController@edit']);
+        Route::post('/machine-update/{id}', ['as' => 'machine.update', 'uses' => 'backend\machineController@update']);
+
 
     });
 });

@@ -15,10 +15,11 @@ class CreateMachinesTable extends Migration
     {
         Schema::create('machines', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('shopName');
             $table->string('machineName');
-            $table->double('detail');
-            $table->double('status');
-            $table->double('ShopName');
+            $table->string('status');
+            $table->date('issueDate');
+            $table->string('description');
             $table->timestamps();
         });
     }

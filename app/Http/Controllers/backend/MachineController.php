@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Models\Machine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Session;
 //use App\Http\Requests;
 
 
@@ -21,7 +23,7 @@ class MachineController extends Controller
         $machine = Machine::all();
 
 
-        return view('backend.machine.index', compact('machine'));
+        return view('backend.machine.list', compact('machine'));
     }
 
     /**
@@ -32,6 +34,8 @@ class MachineController extends Controller
     public function create()
     {
         //
+
+         return view('backend.machine.create');
     }
 
     /**
@@ -43,6 +47,25 @@ class MachineController extends Controller
     public function store(Request $request)
     {
         //
+
+        $this->validate($request, [
+            'shopName' => 'required',
+            'machineName' => 'required',
+        
+        ]);
+        $message = Machine::create([
+            'shopName' => $request->shopName,
+            'machineName' => $request->machineName,
+            'status' => $request->status,
+            'issueDate' => $request->issueDate,
+            'description' => $request->description,
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+        if ($message) {
+            return redirect()->route('machine.list')->with('success_message', 'successfully created ');
+        } else {
+            return redirect()->route('machine.create')->with('error_message', 'Failed To create');
+        }
     }
 
     /**
@@ -79,23 +102,22 @@ class MachineController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'shopname' => 'required',
-            'total' => 'required',
-            'damage' => 'required',
-    
+           'shopName' => 'required',
+            'machineName' => 'required',
+            'status' => 'required',
         ]);
-        
         $m = Machine::find($id);
-        $m->shopname = $request->shopname;
-        $m->total= $request->total;
-        $m->run =$request->total - $request->damage;
-        $m->damage = $request->damage;
+        $m->shopName = $request->shopName;
+        $m->machineName = $request->machineName;
+        $m->status = $request->status;
+        $m->issueDate =$request->issueDate;
+        $m->description =$request->description;
         $m->updated_at = date('Y-m-d H:i:s');
         $message = $m->update();
         if ($message) {
-            return redirect()->route('backend.machine.index')->with('success_message', 'successfully updated');
+            return redirect()->route('machine.list')->with('success_message', 'successfully updated');
         } else {
-            return redirect()->route('backend.machine.edit')->with('error_message', 'failed to  update');
+            return redirect()->route('machine.update')->with('error_message', 'failed to  update');
         }
     }
 
@@ -108,5 +130,13 @@ class MachineController extends Controller
     public function destroy($id)
     {
         //
+
+        $machine = Machine::find($id);
+            $message = $machine->delete();
+            if ($message) {
+                return redirect()->route('machine.list')->with('success_message', 'successfully Deleted');
+            } else {
+                return redirect()->route('machine.update')->with('error_message', 'failed to  Delete');
+            }
     }
 }

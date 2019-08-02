@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    Machinaries Edit Page
+    Machinary Edit Page
 @endsection
 @section('css')
 
@@ -11,13 +11,13 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Machinaries Management </h3>
+                    <h3>Machinary Management </h3>
                 </div>
                 <div class="title_right">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="padding-left: 75px;">
                             <div class="input-group">
-                                <a href="{{route('backend.machine.index')}}" class="btn btn-success">View Machinaries</a>
+                                <a href="{{route('machine.list')}}" class="btn btn-success">View Machinary</a>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Edit Machinaries</h2>
+                            <h2>Edit Machinary</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -59,47 +59,69 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                        <form action="{{url('/update-machine',$machine->id)}}" method="post">
-                        
-                                {{ csrf_field()}}
-                                <div class="form-group">
-                                    <label for="name">ShopName*</label>
-                                    <input type="text" class="form-control" id="shopname" value="{{$machine->shopname}}" name="shopname"
-                                           placeholder="Enter Shopname">
-                                    <span class="error"><b>
-                            @if($errors->has('name'))
-                                                {{$errors->first('name')}}
-                                            @endif</b>
-                        </span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="name">Total*</label>
-                                    <input type="number" class="form-control" id="shopname" value="{{$machine->total}}" name="total"
-                                           placeholder="Enter Total">
-                                    <span class="error"><b>
-                            @if($errors->has('name'))
-                                                {{$errors->first('name')}}
-                                            @endif</b>
-                        </span>
-                                </div>
-                                
-
-                                <div class="form-group">
-                                    <label for="name">Damaged*</label>
-                                    <input type="number" class="form-control" id="damage" value="{{$machine->damage}}" name="damage"
-                                           placeholder="Enter damaged Machine">
-                                    <span class="error"><b>
-                            @if($errors->has('name'))
-                                                {{$errors->first('name')}}
-                                            @endif</b>
-                        </span>
-                                </div>
+                            <form action="{{route('machine.update',$machine->id)}}" method="post">
                                
-                                
-                                <div class="box-footer">
-                                    <button type="submit" name="btnCreate" class="btn btn-primary">Update Machinaries</button>
+
+                             {{ csrf_field()}}
+                                <div class="form-group">
+                                    <label for="name">Shop-Name*</label>
+                                   <select class="form-control js-example-basic-single"  name="shopName" data-placeholder="--Search Heading--" required>
+                                        <option value="{{$machine->shopName}}" >{{$machine->shopName}}</option>
+                                    
+                                        <option value="Machinary-1">Machinary-1</option>
+                                        <option value="Machinary-2">Machinary-2</option>
+                        
+                                    </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="slug">Machine-Name*</label>
+                                    <input type="text" class="form-control"  name="machineName"
+                                            value="{{$machine->machineName}}">
+                                    <span class="error"><b>
+                                            @if($errors->has('slug'))
+                                                {{$errors->first('slug')}}
+                                            @endif</b>
+                                         </span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status*</label><br>
+                                    @if($machine->status == "running")
+                                        <input type="radio" name="status" value="running" id="Active" checked=""><label
+                                                for="Active"> Running</label>
+                                        <input type="radio" name="status" id="damaged" value="damaged"><label for="deactive">Damaged</label>
+                                    @else
+                                        <input type="radio" name="status" value="running" id="Active" ><label
+                                                for="Active"> Running</label>
+                                        <input type="radio" name="status" id="damaged" value="0" checked=""><label for="deactive">Damaged</label>
+
+                                         @endif
+                                </div>
+                                 <div class="form-group">
+                                    <label for="slug">Issue-Date*</label>
+                                    <input type="date" class="form-control"  name="issueDate"
+                                          value="{{$machine->issueDate}}" >
+                                    <span class="error"><b>
+                                            @if($errors->has('slug'))
+                                                {{$errors->first('slug')}}
+                                            @endif</b>
+                                         </span>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="slug">Description*</label>
+                                    <input type="text" class="form-control"  name="description"
+                                           value="{{$machine->description}}">
+                                    <span class="error"><b>
+                                            @if($errors->has('slug'))
+                                                {{$errors->first('slug')}}
+                                            @endif</b>
+                                         </span>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" name="btnCreate" class="btn btn-primary" >Update  Machinary</button>
+                                </div>
+                        
+
                             </form>
                         </div>
                     </div>
@@ -108,5 +130,9 @@
         </div>
     </div>
     <!-- /page content -->
+@endsection
+
+@section('script')
+    
 @endsection
 

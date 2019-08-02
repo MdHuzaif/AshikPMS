@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    ProductCategory Listing Page
+    Machinary Listing Page
 @endsection
 @section('css')
 
@@ -11,14 +11,14 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>ProductCategory Management</h3>
+                    <h3>Machinary Management</h3>
                 </div>
                 <div class="title_right">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" style="padding-left: 50px;">
                             <div class="input-group">
                                 <!-- add a create page -->
-                                <a href="{{route('machines.create')}}" class="btn btn-success">Create Machine</a>
+                                <a href="{{route('machine.create')}}" class="btn btn-success">Create Machine</a>
                             </div>
                         </div>
                     </div>
@@ -58,41 +58,39 @@
                             <div class="clearfix"></div>
                         </div>
                             <!---Show summery -->
-                            <div class="x_content">
-                            <table class="table table-responsive">
+                            <div class="x_content"><table width="100%" class="table table-striped table-bordered table-hover" id="machinetable">
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
                                     <th>Shop Name</th>
-                                    <th>Running</th>
-                                    <th>Damaged</th>
-                                    <th>Total</th>
+                                    <th>Machine Name</th>
+                                    <th>Status</th>
+                                    <th>Issue Date</th>
+                                    <th>Description</th>
+                                    <th>Create Date</th>
+                                    <th>Action</th>
+                                    
                                     
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php $i=1 ?>
-                                @foreach($productcategory as $pc)
+                                @foreach($machine as $m)
                                     <tr>
                                         <th> {{$i++}}</th>
-                                        <td> <b>{{$pc->name}}</b></td>
-                                        <td> {{$pc->slug}}</td>
-                                        <td>
-                                            @if($pc->status == 1)
-                                                <span class="label label-success"> Active </span>
-                                            @else
-                                                <span class="label label-danger">DeActive</span>
-                                            @endif
-                                        </td>
-                                        <td> {{$pc->created_by}}</td>
-                                        <td> {{$pc->modified_by}}</td>
+                                        <td> <b>{{$m->shopName}}</b></td>
+                                        <td> {{$m->machineName}}</td>
+                                         <td>{{$m->status}}</td>
+                                          <td>{{$m->issueDate}}</td>
+                                           <td>{{$m->description}}</td>
+                                        <td> {{$m->created_at}}</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <a href="{{route('productcategory.edit',$pc->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a href="{{route('machine.edit',$m->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form action="{{route('productcategory.delete' ,$pc->id)}}" method="post">
+                                                    <form action="{{route('machine.delete' ,$m->id)}}" method="post">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         {{ csrf_field()}}
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('are you sure to delete?')" ><i class="fa fa-trash-o"></i> Delete</button>
@@ -106,54 +104,7 @@
                             </table>
                         </div>
                         <!-- Show detail--->
-                        <div class="x_content">
-                            <table class="table table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>S.N.</th>
-                                    <th>Category Name</th>
-                                    <th>Slug</th>
-                                    <th>status</th>
-                                    <th>created_by</th>
-                                    <th>modified_by</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $i=1 ?>
-                                @foreach($productcategory as $pc)
-                                    <tr>
-                                        <th> {{$i++}}</th>
-                                        <td> <b>{{$pc->name}}</b></td>
-                                        <td> {{$pc->slug}}</td>
-                                        <td>
-                                            @if($pc->status == 1)
-                                                <span class="label label-success"> Active </span>
-                                            @else
-                                                <span class="label label-danger">DeActive</span>
-                                            @endif
-                                        </td>
-                                        <td> {{$pc->created_by}}</td>
-                                        <td> {{$pc->modified_by}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <a href="{{route('productcategory.edit',$pc->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <form action="{{route('productcategory.delete' ,$pc->id)}}" method="post">
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        {{ csrf_field()}}
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('are you sure to delete?')" ><i class="fa fa-trash-o"></i> Delete</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -163,5 +114,10 @@
 @endsection
 
 @section('script')
-
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#machinetable').DataTable();
+        } );
+    </script>
 @endsection
