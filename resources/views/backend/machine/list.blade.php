@@ -58,10 +58,45 @@
                             <div class="clearfix"></div>
                         </div>
                             <!---Show summery -->
-                            <div class="x_content"><table width="100%" class="table table-striped table-bordered table-hover" id="machinetable">
+                            <div class="x_content">
+                
+               <table width="100%" class="table table-striped table-bordered table-hover" >
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
+                                    <th>Shop Name</th>
+                                    <th>Running</th>
+                                    <th>Damaged</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    
+                                   <td>1</td>
+                                   <td>Machinary-1</td>
+                                   <td>{{$r1}}</td>
+                                   <td>{{$d1}}</td>
+                                   <td>{{$t1}}</td>
+                                </tr>
+
+                                 <tr>
+                                    
+                                   <td>2</td>
+                                   <td>Machinary-2</td>
+                                   <td>{{$r2}}</td>
+                                   <td>{{$d2}}</td>
+                                   <td>{{$t2}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table><br>
+
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="machinetable">
+                                <thead>
+                                <tr>
+                                
                                     <th>Shop Name</th>
                                     <th>Machine Name</th>
                                     <th>Status</th>
@@ -74,10 +109,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $i=1 ?>
+                        
                                 @foreach($machine as $m)
                                     <tr>
-                                        <th> {{$i++}}</th>
+                                
                                         <td> <b>{{$m->shopName}}</b></td>
                                         <td> {{$m->machineName}}</td>
                                          <td>{{$m->status}}</td>
@@ -121,3 +156,5 @@
         } );
     </script>
 @endsection
+
+

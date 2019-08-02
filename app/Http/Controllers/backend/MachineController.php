@@ -19,11 +19,40 @@ class MachineController extends Controller
      */
     public function index()
     {
-        
+        $m='Machinary-1';
+        $m2='Machinary-2';
+        $r='running';
+        $d ='damaged';
         $machine = Machine::all();
+        
+         $runshop1 = Machine::where('shopName','=', $m ) 
+                    ->where('status','=', $r )
+                   ->get();
 
+          $r1 =count($runshop1); 
 
-        return view('backend.machine.list', compact('machine'));
+          $damshop1 = Machine::where('shopName','=', $m ) 
+                    ->where('status','=', $d )
+                   ->get();
+
+          $d1 =count($damshop1); 
+
+           $runshop2 = Machine::where('shopName','=', $m2 ) 
+                    ->where('status','=', $r )
+                   ->get();
+
+          $r2 =count($runshop2);
+
+           $damshop2 = Machine::where('shopName','=', $m2 ) 
+                    ->where('status','=', $d )
+                   ->get();
+
+          $d2 =count($damshop2);
+
+            $t1=$r1 + $d1;
+            $t2=$r2 + $d2;
+
+        return view('backend.machine.list', compact('machine','r1','d1','r2','d2','t1','t2'));
     }
 
     /**
