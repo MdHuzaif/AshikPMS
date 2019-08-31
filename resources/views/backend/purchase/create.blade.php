@@ -66,20 +66,20 @@
                             <form action="{{route('purchase.store')}}" method="post">
                                 {{ csrf_field()}}
                                 <div class="form-group">
-                                    <label for="goods_name">Goods Name</label>
-                                    <input type="text" class="form-control" id="goods_name" name="goods_name" placeholder="Enter Goods Name what you Purchase">
-                                     @if($errors->has('goods_name'))
+                                    <label for="goods_name">Party Name</label>
+                                    <input type="text" class="form-control" id="partyName" name="partyName" placeholder="Enter Party Name">
+                                     @if($errors->has('party_name'))
                                         <span class="error"><b>
-                                            {{$errors->first('goods_name')}}
+                                            {{$errors->first('party_name')}}
                                         </b></span>
                                      @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="party_name">Party Name</label>
-                                    <input type="text" class="form-control" id="party_name" name="party_name" placeholder="Enter party_name">
-                                    @if($errors->has('party_name'))
+                                    <label for="party_name">Order NO</label>
+                                    <input type="text" class="form-control" id="orderNo" name="orderNo" placeholder="Enter Order No">
+                                    @if($errors->has('order_no'))
                                         <span class="error"><b>
-                                                {{$errors->first('party_name')}}
+                                                {{$errors->first('order_no')}}
                                             </b></span>
                                     @endif
                                 </div>
@@ -101,12 +101,16 @@
                                         </b></span>
                                     @endif
                                 </div>
-                                <div class="form-group">
-                                    <label>Purchase Status</label><br>
-                                    <input type="radio" name="status" id="normal" value="normal" checked><label for="normal"> Normal Bill </label><br>
-                                    <input type="radio" name="status" value="vat" id="vat" ><label for="vat"> Vat Bill </label><br>
-                                    <input type="radio" name="status" id="pan" value="pan"><label for="pan"> Pan Bill </label>
+                                 <div class="form-group">
+                                    <label for="paidamount">Discount*</label>
+                                    <input type="number" class="form-control" name="purchaseDiscount" id="purchaseDiscount" placeholder="Enter Discount">
+                                    @if($errors->has('purchase_discount'))
+                                        <span class="error"><b>
+                                            {{$errors->first('purchase_discount')}}
+                                        </b></span>
+                                    @endif
                                 </div>
+                                
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <button type="submit" name="btnSave" class="btn btn-danger" >Save Purchase </button>

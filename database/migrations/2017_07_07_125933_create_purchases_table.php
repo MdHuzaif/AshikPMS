@@ -15,12 +15,13 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('goods_name');
-            $table->string('party_name');
+            $table->string('partyName');
+            $table->string('OrderNo');
             $table->double('totalamount');
             $table->double('paidamount');
             $table->double('dueamount');
-            $table->enum('status',['vat','pan','normal']);
+            $table->double('purchaseDiscount');
+            $table->string('partyOrder');
             $table->date('purchase_date');
             $table->string('created_by', 100);
             $table->foreign('created_by')->references('username')->on('users')->onUpdate('cascade');

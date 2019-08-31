@@ -43,18 +43,19 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'goods_name' => 'required',
-            'party_name' => 'required',
+            'partyName' => 'required',
+             'orderNo' => 'required',
             'totalamount' => 'required',
             'paidamount' => 'required',
         ]);
         $purchase = new Purchase();
-        $purchase->goods_name = $request->goods_name;
-        $purchase->party_name = $request->party_name;
+        $purchase->partyName = $request->partyName;
+        $purchase->orderNo = $request->orderNo;
         $purchase->totalamount = $request->totalamount;
         $purchase->paidamount = $request->paidamount;
-        $purchase->dueamount = $request->totalamount - $request->paidamount;
-        $purchase->status = $request->status;
+        $purchase->dueamount = $request->totalamount - ($request->paidamount + $request->purchaseDiscount);
+        $purchase->purchaseDiscount =$request->purchaseDiscount;
+        $purchase->partyOrder= $request->partyName."-".$request->orderNo."-".date('Y-m-d H:i:s');
         $purchase->purchase_date = date('Y-m-d H:i:s');
         $purchase->created_by = Auth::user()->username;
         $purchase->created_at = date('Y-m-d H:i:s');

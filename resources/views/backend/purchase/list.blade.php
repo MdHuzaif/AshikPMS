@@ -61,14 +61,14 @@
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
-                                    <th>Goods Name</th>
                                     <th>Party Name</th>
+                                    <th>Order No</th>
                                     <th>Total Amount</th>
                                     <th>Paid Amount</th>
                                     <th>Due Amount</th>
+                                     <th>Discount</th>
                                     <th>Purchase Date</th>
                                     <th>Purchase By</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -77,24 +77,14 @@
                                 @foreach($rempurchase as $pc)
                                     <tr>
                                         <th> {{$i++}}</th>
-                                        <td> {{$pc->goods_name}}</td>
-                                        <td> {{$pc->party_name}}</td>
+                                        <td> {{$pc->partyName}}</td>
+                                        <td> {{$pc->orderNo}}</td>
                                         <td> {{$pc->totalamount}}</td>
                                         <td> {{$pc->paidamount}}</td>
                                         <td> {{$pc->dueamount}}</td>
+                                        <td> {{$pc->purchaseDiscount}}</td>
                                         <td> {{$pc->created_at}}</td>
                                         <td> {{$pc->created_by}}</td>
-                                        <td>
-                                            @if($pc->status == 'vat')
-                                                <span class="label label-success"> vat </span>
-                                            @endif
-                                            @if($pc->status == 'pan')
-                                                <span class="label label-success"> pan </span>
-                                            @endif
-                                            @if($pc->status == 'normal')
-                                                <span class="label label-success"> normal </span>
-                                            @endif
-                                        </td>
                                         <td>
                                             <a href="{{route('purchase.update',$pc->id)}}" class="btn btn-info" onclick="return confirm('Do You Pay Due Amount?????')"><i class="fa fa-check-circle"></i> Clear Paid</a>
                                         </td>
@@ -177,14 +167,15 @@
                                 <thead>
                                 <tr>
                                     <th>S.N.</th>
-                                    <th>Goods Name</th>
                                     <th>Party Name</th>
+                                    <th>Order No</th>
                                     <th>Total Amount</th>
                                     <th>Paid Amount</th>
                                     <th>Due Amount</th>
+                                     <th>Discount</th>
                                     <th>Purchase Date</th>
                                     <th>Purchase By</th>
-                                    <th>Status</th>
+                                
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -192,24 +183,14 @@
                                 @foreach($paidpurchase as $pc)
                                     <tr>
                                         <th> {{$i++}}</th>
-                                        <td> {{$pc->goods_name}}</td>
-                                        <td> {{$pc->party_name}}</td>
+                                        <td> {{$pc->partyName}}</td>
+                                        <td> {{$pc->orderNo}}</td>
                                         <td> {{$pc->totalamount}}</td>
                                         <td> {{$pc->paidamount}}</td>
                                         <td> {{$pc->dueamount}}</td>
+                                        <td> {{$pc->purchaseDiscount}}</td>
                                         <td> {{$pc->created_at}}</td>
                                         <td> {{$pc->created_by}}</td>
-                                        <td>
-                                            @if($pc->status == 'vat')
-                                                <span class="label label-success"> vat </span>
-                                            @endif
-                                            @if($pc->status == 'pan')
-                                                <span class="label label-success"> pan </span>
-                                            @endif
-                                            @if($pc->status == 'normal')
-                                                <span class="label label-success"> normal </span>
-                                            @endif
-                                        </td>
                                     </tr>
                                 @endforeach
                                 <tr>
