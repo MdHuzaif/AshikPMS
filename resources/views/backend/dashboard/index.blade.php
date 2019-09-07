@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-   IMS PRO
+   Ashik Engineering
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('backend/plugins/select2.min.css')}}">
@@ -96,7 +96,7 @@
                                          @endif</b></span>
                             </div>
                             <div class="form-group">
-                                <label for="sales_quantity"> ( Quantity) </label>
+                                <label for="sales_quantity">পন্যের পরিমা ( Quantity) </label>
                                 <input type="number" min="1" value="1" class="form-control" id="sales_quantity" name="sales_quantity" placeholder="Quantity" required>
                                 <span class="error"><b>
                                          @if($errors->has('sales_quantity'))
